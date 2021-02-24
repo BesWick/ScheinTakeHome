@@ -24,7 +24,7 @@
 
 > Delete an existing person with SSN
 
-## Nain File Structure
+## Main File Structure
 
 ```bash
 .
