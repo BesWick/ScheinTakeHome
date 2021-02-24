@@ -21,9 +21,10 @@
 > Update an existing person
 
 `DELETE` /api/person/:socialSecurityNumber
-Delete an existing person with SSN
 
-## File Structure
+> Delete an existing person with SSN
+
+## Nain File Structure
 
 .
 ├── server.js # main file that starts the server
@@ -31,12 +32,7 @@ Delete an existing person with SSN
 │ ├── router.js # handles routes for /api/person
 │ ├── validator.js # validates user's data
 │ └── person-model.js # operations on the people array, here you would make db calls
-
--server.js (main file that starts the server)
-/person
--router.js (handles routes for /api/person)
--validator.js (validates user's data)
--person-model.js (operations on the people array, here you would make db calls)
+└── ...
 
 ## Installation
 
