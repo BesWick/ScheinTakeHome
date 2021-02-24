@@ -39,7 +39,9 @@ function addPerson(person, update_ssn, callback) {
         callback(err, validator.examplePerson)
     } else if (checkSSNExist(person.socialSecurityNumber)) {
         if (update_ssn == null) {
-            callback('Error: Person With SSN Already Exist:')
+            callback(
+                `Error: Person With SSN ${person.socialSecurityNumber} Already Exist:`,
+            )
         } else {
             let obj = personArr.find((ele, i) => {
                 if ((ele.socialSecurityNumber = update_ssn)) {
@@ -57,14 +59,14 @@ function addPerson(person, update_ssn, callback) {
             personArr.push(person)
             callback(null, person)
         } else {
-            callback(`Error: Person with ${update_ssn} doesn't exist`)
+            callback(`Error: Person with SSN:${update_ssn} doesn't exist`)
         }
     }
 }
 
 function deletePerson(ssn, callback) {
     if (!checkSSNExist(ssn)) {
-        callback("Person with SSN doesn't exist")
+        callback(`Error: Person with SSN:${ssn} doesn't exist`)
     } else {
         personArr.find((ele, i) => {
             if (ele.socialSecurityNumber == ssn) {
