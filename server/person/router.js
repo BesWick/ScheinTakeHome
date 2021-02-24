@@ -28,12 +28,12 @@ function addPerson(req, res) {
 
 function updatePerson(req, res) {
     const { ssn } = req.params
-    people.addPerson(req.body, ssn, (err, person) => {
+    people.addPerson(req.body, ssn, (err, result) => {
         if (err) {
             res.status(500).json(err)
             return
         }
-        res.status(201).json(result)
+        res.status(200).json(result)
     })
 }
 

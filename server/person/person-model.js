@@ -28,7 +28,7 @@ function getPerson(ssn, callback) {
         let res = personArr.find((ele) => ele.socialSecurityNumber == ssn)
         callback(null, res)
     } else {
-        callback('No Person with given SSN exist', [])
+        callback(`Error: No Person with SSN:${ssn} exist`, [])
     }
 }
 
@@ -41,22 +41,23 @@ function addPerson(person, update_ssn, callback) {
         if (update_ssn == null) {
             callback('Error: Person With SSN Already Exist:')
         } else {
-            callback("Error: Person doesn't exist")
-        }
-    } else {
-        if (update_ssn == null) {
-            personArr.push(person)
-            callback(null, person)
-        } else {
             let obj = personArr.find((ele, i) => {
                 if ((ele.socialSecurityNumber = update_ssn)) {
                     personArr[i].firstName = person.firstName
                     personArr[i].lastName = person.lastName
                     personArr[i].dateOfBirth = person.dateOfBirth
                     personArr[i].emailAddress = person.emailAddress
-                    callback(null, obj)
                 }
+                return ele
             })
+            callback(null, obj)
+        }
+    } else {
+        if (update_ssn == null) {
+            personArr.push(person)
+            callback(null, person)
+        } else {
+            callback(`Error: Person with ${update_ssn} doesn't exist`)
         }
     }
 }
